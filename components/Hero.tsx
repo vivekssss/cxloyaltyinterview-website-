@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Calendar, MapPin, Users } from 'lucide-react';
 
 export default function Hero() {
@@ -13,22 +12,6 @@ export default function Hero() {
     minutes: 0,
     seconds: 0,
   });
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const backgroundImages = [
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80", // Conference Hall
-    "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80", // Networking
-    "https://images.unsplash.com/photo-1512453979798-5ea932a235c8?auto=format&fit=crop&q=80", // Dubai
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     // Set target date to June 17, 2025
@@ -57,27 +40,20 @@ export default function Hero() {
   return (
     <>
     <section className="relative min-h-[85vh] flex flex-col justify-center text-white overflow-hidden bg-cx-blue">
-      {/* Background Images */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
          <div className="absolute inset-0 bg-cx-blue/70 z-10"></div> {/* Overlay */}
-         <AnimatePresence mode="popLayout">
-            <motion.div
-                key={currentImageIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5 }}
-                className="absolute inset-0 w-full h-full"
-            >
-                <Image 
-                    src={backgroundImages[currentImageIndex]}
-                    alt="Background"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-            </motion.div>
-         </AnimatePresence>
+         {/* Mobile: scale larger to fill height. Desktop: standard scale */}
+         <div className="absolute inset-0 w-full h-full scale-[3.0] md:scale-110">
+            <iframe 
+                src="https://www.youtube.com/embed/svEqRwTnh2o?autoplay=1&mute=1&controls=0&loop=1&playlist=svEqRwTnh2o&start=8&end=120&playsinline=1" 
+                title="Background Video"
+                className="w-full h-full object-cover pointer-events-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ pointerEvents: 'none' }}
+            ></iframe>
+         </div>
       </div>
 
       <div className="container mx-auto px-4 relative z-20 pt-20">
@@ -85,18 +61,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex items-center gap-4 mb-6"
+          className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 mb-6"
         >
-            <span className="uppercase tracking-widest text-sm md:text-base font-bold">Driving Revenue</span>
-            <div className="h-6 w-[2px] bg-white"></div>
-            <span className="uppercase tracking-widest text-sm md:text-base font-bold">Building Relations</span>
+            <span className="uppercase tracking-widest text-xs md:text-base font-bold">Driving Revenue</span>
+            <div className="hidden md:block h-6 w-[2px] bg-white"></div>
+            <span className="uppercase tracking-widest text-xs md:text-base font-bold">Building Relations</span>
         </motion.div>
         
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight max-w-5xl"
+          className="text-3xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight max-w-5xl"
         >
           THROUGH CX TRANSFORMATION &<br/> INCREASED BRAND LOYALTY
         </motion.h1>
@@ -107,11 +83,11 @@ export default function Hero() {
           transition={{ delay: 0.6 }}
           className="flex flex-col md:flex-row gap-4 mb-12"
         >
-          <div className="bg-white text-cx-blue px-6 py-3 rounded-md flex items-center gap-3 font-bold min-w-[250px]">
+          <div className="bg-white text-cx-blue px-6 py-3 rounded-md flex items-center gap-3 font-bold min-w-[250px] justify-center md:justify-start">
             <Calendar className="text-cx-blue" />
             <span>17th - 18th June 2025</span>
           </div>
-          <div className="bg-white text-cx-blue px-6 py-3 rounded-md flex items-center gap-3 font-bold min-w-[250px]">
+          <div className="bg-white text-cx-blue px-6 py-3 rounded-md flex items-center gap-3 font-bold min-w-[250px] justify-center md:justify-start">
              <MapPin className="text-cx-blue" />
              <span>Conrad Dubai</span>
           </div>
@@ -121,7 +97,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="mb-16 md:mb-24"
+          className="mb-16 md:mb-24 flex justify-center md:justify-start"
         >
              <Link href="#register" className="bg-cx-red hover:bg-red-700 text-white px-8 py-4 rounded-md font-bold uppercase text-lg transition-all inline-flex items-center gap-3">
                 <Users className="w-6 h-6" />
@@ -173,7 +149,7 @@ export default function Hero() {
                 {/* Spacer column */}
                 <div className="hidden md:block md:col-span-1"></div>
 
-                <div className="md:col-span-2 flex justify-start md:justify-start pl-4">
+                <div className="md:col-span-2 flex justify-start md:justify-start pl-4 mt-8 md:mt-0">
                     <div className="relative w-full h-24 md:h-32">
                         <img 
                             src="https://cxloyaltymena.com/wp-content/uploads/2025/03/Logo-4th-Annual-Future-Banks-Summit-Awards-2025-01-1024x344.png"
