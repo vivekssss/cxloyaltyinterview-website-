@@ -34,9 +34,10 @@ export default function JoinConference() {
                 </motion.div>
             </div>
 
+
             {/* Right Side: Image with Pop-out Effect */}
-            <div className="w-full lg:w-[40%] relative min-h-[300px] lg:min-h-full lg:flex lg:items-end">
-                <div className="relative w-full h-full lg:h-[115%] lg:-mt-[15%] lg:mr-4 lg:mb-4 rounded-lg overflow-hidden shadow-2xl transform translate-y-0 lg:-translate-y-8">
+            <div className="w-full lg:w-[40%] relative h-[280px] lg:min-h-full lg:flex lg:items-end">
+                <div className="absolute inset-0 lg:relative w-full h-full lg:h-[115%] lg:-mt-[15%] lg:mr-4 lg:mb-4 rounded-lg overflow-hidden shadow-2xl transform translate-y-0 lg:-translate-y-8">
                     <Image 
                         src="https://cxloyaltymena.com/wp-content/uploads/2024/05/g22.jpg" 
                         alt="Conference Audience" 
