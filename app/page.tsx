@@ -9,6 +9,9 @@ import Speakers from '@/components/Speakers';
 import TopicHighlights from '@/components/TopicHighlights';
 import Sponsors from '@/components/Sponsors';
 import Pricing from '@/components/Pricing';
+import WhySponsor from '@/components/WhySponsor';
+import ImageGallery from '@/components/ImageGallery';
+import JoinConference from '@/components/JoinConference';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -25,6 +28,9 @@ export default function Home() {
       <TopicHighlights />
       <Sponsors />
       <Pricing />
+      <WhySponsor />
+      <ImageGallery />
+      <JoinConference />
       <Footer />
     </main>
   );

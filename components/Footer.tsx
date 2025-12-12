@@ -1,79 +1,94 @@
 'use client';
 
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Twitter } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-cx-blue text-white pt-16 pb-8 border-t border-gray-800">
+    <footer className="bg-[#001D4C] text-white pt-16 pb-8 border-t border-[#002866]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* About */}
-          <div>
-            <div className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <span>CX</span><span className="text-cx-red">Loyalty</span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              The 4th Edition CX & Loyalty Summit & Awards MENA 2025 brings together the biggest names in customer experience and provides them with leading solutions.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="bg-gray-800 p-2 rounded hover:bg-cx-red transition-colors"><Facebook size={18} /></a>
-              <a href="#" className="bg-gray-800 p-2 rounded hover:bg-cx-red transition-colors"><Twitter size={18} /></a>
-              <a href="#" className="bg-gray-800 p-2 rounded hover:bg-cx-red transition-colors"><Linkedin size={18} /></a>
-              <a href="#" className="bg-gray-800 p-2 rounded hover:bg-cx-red transition-colors"><Instagram size={18} /></a>
-            </div>
+          
+          {/* Column 1: Logo Box */}
+          <div className="flex flex-col items-start">
+             <div className="bg-[#003380] rounded-xl p-8 w-64 h-64 flex items-center justify-center shadow-lg">
+                {/* Using the header logo but containing it nicely */}
+                <div className="relative w-full h-full">
+                     <Image
+                        src="https://cxloyaltymena.com/wp-content/uploads/2024/05/CX-Loyalty-MENA-2025-logo-02-1-1-1024x207.png"
+                        alt="CX Loyalty MENA 2025"
+                        fill
+                        className="object-contain"
+                     />
+                </div>
+             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Useful Links */}
           <div>
-            <h3 className="text-lg font-bold mb-6 uppercase border-b-2 border-cx-red inline-block pb-1">Quick Links</h3>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-cx-red transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-cx-red transition-colors">About Event</a></li>
-              <li><a href="#speakers" className="hover:text-cx-red transition-colors">Speakers</a></li>
-              <li><a href="#agenda" className="hover:text-cx-red transition-colors">Agenda</a></li>
-              <li><a href="#sponsors" className="hover:text-cx-red transition-colors">Sponsors</a></li>
-              <li><a href="#contact" className="hover:text-cx-red transition-colors">Contact Us</a></li>
+            <h3 className="text-lg font-medium mb-6 uppercase tracking-wider text-gray-300">Useful Links</h3>
+            <div className="h-px w-10 bg-gray-600 mb-6"></div>
+            <ul className="space-y-3 text-sm text-gray-300">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="#agenda" className="hover:text-white transition-colors">Schedule</Link></li>
+              <li><Link href="#speakers" className="hover:text-white transition-colors">Speakers</Link></li>
+              <li><Link href="#attendees" className="hover:text-white transition-colors">Delegate List</Link></li>
+              <li><Link href="#sponsors" className="hover:text-white transition-colors">Sponsors</Link></li>
+              <li><Link href="#awards" className="hover:text-white transition-colors">Awards</Link></li>
+              <li><Link href="#contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Media ▼</Link></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 3: Address */}
           <div>
-            <h3 className="text-lg font-bold mb-6 uppercase border-b-2 border-cx-red inline-block pb-1">Contact Us</h3>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li className="flex items-start gap-3">
-                <MapPin className="text-cx-red shrink-0 mt-1" size={18} />
-                <span>123 Business Avenue, Tech District, Dubai, UAE</span>
+            <h3 className="text-lg font-medium mb-6 uppercase tracking-wider text-gray-300">Address</h3>
+            <div className="h-px w-10 bg-gray-600 mb-6"></div>
+            <ul className="space-y-6 text-sm text-gray-300">
+              <li className="flex items-start gap-4">
+                <MapPin className="text-white shrink-0 mt-1 w-5 h-5" />
+                <span className="leading-relaxed">1702 & 1706 , Mazaya Business Avenue BB2, Al Thanya Fifth, Jumeirah Lake Towers, Dubai, UAE</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="text-cx-red shrink-0" size={18} />
-                <span>+971 4 123 4567</span>
+              <li className="flex items-center gap-4">
+                <Phone className="text-white shrink-0 w-5 h-5" />
+                <span>+971 4 243 4677/88</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="text-cx-red shrink-0" size={18} />
-                <span>info@cxloyaltymena.com</span>
+              <li className="flex items-center gap-4">
+                <Mail className="text-white shrink-0 w-5 h-5" />
+                <span>info@verve-management.com</span>
               </li>
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold mb-6 uppercase border-b-2 border-cx-red inline-block pb-1">Newsletter</h3>
-            <p className="text-gray-400 text-sm mb-4">Subscribe to our newsletter for latest updates.</p>
-            <form className="flex flex-col gap-2">
-              <input 
-                type="email" 
-                placeholder="Your Email Address" 
-                className="bg-gray-800 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-cx-red"
-              />
-              <button className="bg-cx-red text-white px-4 py-2 rounded font-bold uppercase hover:bg-red-700 transition-colors">
-                Subscribe
-              </button>
-            </form>
+          {/* Column 4: Initiative By */}
+          <div className="flex flex-col items-start">
+             <h3 className="text-sm font-bold uppercase tracking-widest mb-4">AN INITIATIVE BY</h3>
+             <div className="h-px w-full bg-white mb-6"></div>
+             
+             <div className="mb-8 relative w-48 h-20">
+                <Image 
+                    src="https://cxloyaltymena.com/wp-content/uploads/2024/05/verveManagement.png"
+                    alt="Verve Management"
+                    fill
+                    className="object-contain object-left"
+                />
+             </div>
+
+             <div className="flex gap-3">
+              <a href="#" className="bg-[#0056b3] p-2 rounded-full hover:bg-white hover:text-[#0056b3] transition-colors"><Facebook size={18} /></a>
+              <a href="#" className="bg-[#0056b3] p-2 rounded-full hover:bg-white hover:text-[#0056b3] transition-colors"><Twitter size={18} /></a>
+              <a href="#" className="bg-[#0056b3] p-2 rounded-full hover:bg-white hover:text-[#0056b3] transition-colors"><Instagram size={18} /></a>
+              <a href="#" className="bg-[#0056b3] p-2 rounded-full hover:bg-white hover:text-[#0056b3] transition-colors"><Linkedin size={18} /></a>
+            </div>
           </div>
+
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; 2025 CX & Loyalty Summit MENA. All Rights Reserved.</p>
+        {/* Bottom Bar */}
+        <div className="border-t border-[#002866] pt-8 text-center text-sm text-gray-400">
+          <p className="mb-2">Copyrights &copy; 2025</p>
+          <p>All Rights Reserved | CX & LOYALTY MENA SUMMIT 2025.</p>
         </div>
       </div>
     </footer>
